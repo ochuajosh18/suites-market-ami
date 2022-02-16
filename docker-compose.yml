@@ -1,0 +1,17 @@
+version: "3"
+services:
+  nginx:
+  restart: always
+  build:
+   dockerfile: Dockerfile
+   context: ./nginx
+  ports:
+   - "3080:80"
+   SUITES-MARKET-AMI:
+     stdin_open: true
+     build:
+       dockerfile: Dockerfile
+       context: ./SUITES-MARKET-AMI
+     volumes:
+       - /app/node_modules
+       - ./SUITES-MARKET-AMI:/app     
